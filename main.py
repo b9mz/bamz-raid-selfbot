@@ -19,9 +19,6 @@ print("                                     ▀▀▀░ ▀▀▀ ▀▀▀ ░
 print("                                     ________________________________________________")
 print("\n\n\n")
 
-# Définitions des bases pour le programme
-
-
 
 # Programme
 
@@ -65,6 +62,11 @@ if language == "2":
         print(" You can use the commands on top using the chat, Ignore the errors bellow")
         print("__________________________________________________________________________")
         print("\n")
+
+    @client.listen()
+    async def on_command_error(ctx, error):
+        if isinstance(error, commands.CommandNotFound):
+            print("Command not found")    
 
     @client.command(pass_context=True)
     async def ccr(ctx):
@@ -133,6 +135,11 @@ if language == "1":
         print(" Vous pouvez utiliser les commands qui sont marqué au dessus en utilisant le chat")
         print("_____________________________________________________________________________________")
         print("\n")
+    
+    @client.listen()
+    async def on_command_error(ctx, error):
+        if isinstance(error, commands.CommandNotFound):
+            print("Je ne trouve pas la commande")
 
     @client.command(pass_context=True)
     async def ccr(ctx):
@@ -169,4 +176,4 @@ if language == "1":
 
 else:
     print("___________________________________________________________________")
-    print("\n\n Une erreur est survenue")
+    print("\n\n You have to chose '1' or '2'")
